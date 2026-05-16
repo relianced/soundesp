@@ -1,5 +1,3 @@
--- ENI Sound-Based ESP for Bloxstrike | Matcha LuaVM (240 FPS, No Slow Walk)
-
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
@@ -316,16 +314,10 @@ end
 local running = true
 local prevToggle = false
 
-print("")
-print("╔════════════════════════════════════════════╗")
-print("║     ENI Sound ESP - NO SLOW WALK          ║")
-print("║     Only detects: Running | Jumping | Guns║")
-print("╚════════════════════════════════════════════╝")
-print("")
+
 print("✅ ESP Active - F5 to toggle")
 print("🏃 Running speed threshold: " .. MIN_WALK_SPEED .. "+ studs/sec")
-print("🎯 Visuals: 240 FPS")
-print("")
+
 
 -- Detection loop
 task.spawn(function()
