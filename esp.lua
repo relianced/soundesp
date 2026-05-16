@@ -17,7 +17,7 @@ local CT_COLOR = C3(100, 100, 255)         -- Blue for Counter-Terrorists
 local MARKER_THICKNESS = 2
 
 -- How long marker stays on screen (seconds)
-local MARKER_DURATION = 0.1
+local MARKER_DURATION = 0.01
 
 -- Sound detection settings
 local MAX_SOUND_DISTANCE = 70
@@ -25,7 +25,7 @@ local MIN_SOUND_DISTANCE = 0
 
 -- Movement speed thresholds (studs per second)
 -- Walking is typically 8-14, running is 14-22, sprinting is 22+
-local MIN_WALK_SPEED = 11    -- Only detect movement ABOVE this speed (ignore slow walk)
+local MIN_WALK_SPEED = 12    -- Only detect movement ABOVE this speed (ignore slow walk)
 local MAX_WALK_SPEED = 50    -- Maximum speed to consider (ignore glitches)
 
 -- Sound types to detect
@@ -34,8 +34,8 @@ local DETECT_JUMPING = true
 local DETECT_SHOOTING = true
 
 -- Update speeds
-local DETECTION_SPEED = 0.033  -- ~30 FPS detection
-local VISUAL_SPEED = 0.00416   -- 240 FPS
+local DETECTION_SPEED = 0  -- ~30 FPS detection
+local VISUAL_SPEED = 0   -- 240 FPS
 
 -- Hotkey to toggle (F5)
 local TOGGLE_KEY = 0x74
@@ -147,7 +147,7 @@ local function createMarker(character, position, characterName, team, distance)
     ring.ZIndex = 4
     
     local fill = Drawing.new("Circle")
-    fill.Radius = MARKER_RADIUS - 6
+    fill.Radius = MARKER_RADIUS - 1
     fill.NumSides = MARKER_SIDES
     fill.Filled = true
     fill.Color = markerColor
@@ -179,7 +179,7 @@ local function createMarker(character, position, characterName, team, distance)
     -- Fast pulse effect
     ring.Radius = MARKER_RADIUS + 8
     task.spawn(function()
-        task.wait(0.05)
+        task.wait(0)
         if activeMarkers[character] and activeMarkers[character].ring then
             activeMarkers[character].ring.Radius = MARKER_RADIUS
         end
