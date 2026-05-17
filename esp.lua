@@ -269,7 +269,7 @@ local function detectSounds()
                 
                 -- Jumping detection
                 if DETECT_JUMPING and not detectedSound then
-                    local terrainHeight = workspace.Terrain:GetHeight(position.X, position.Z)
+                    local terrainHeight = rootPart.Velocity.Y > 15
                     if position.Y - 3 > terrainHeight + 2 then
                         detectedSound = true
                     end
